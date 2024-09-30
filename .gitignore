@@ -1,0 +1,11 @@
+# Python virtual environment
+venv/
+
+# DBT
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# Environment variables
+.envrc

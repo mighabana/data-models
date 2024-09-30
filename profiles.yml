@@ -1,0 +1,13 @@
+data_models:
+    target: dev
+    outputs:
+      dev:
+        type: bigquery
+        method: service-account
+        keyfile: "{{ env_var('DBT_KEYFILE') }}"
+        project: "{{ env_var('DBT_GCP_PROJECT') }}"
+        dataset: dbt_data_models
+        threads: 1
+        timeout_seconds: 300
+        location: europe-west4
+        priority: interactive
