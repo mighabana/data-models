@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: spotify
+    schema: bronze_spotify
+    tables:
+      - name: audio_streaming_history
+      - name: follow_data
+      - name: identifier
+      - name: library
+      - name: marquee
+      - name: search_query
+      - name: user_data

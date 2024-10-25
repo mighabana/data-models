@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: track_listen_history
+    description: "Spotify track listening history"
+    columns:
+      - name: track_name
+        description: "The name of the given track"
+        data_tests:
+          - not_null
+      - name: artist_name
+        description: "The artist of the given track"
+        data_tests:
+          - not_null
+      - name: album_name
+        description: "The name of the album of the given track"
+        data_tests:
+          - not_null
+      - name: spotify_track_uri
+        description: "The Spotify track URI of the given track"
+        data_tests:
+          - not_null
+      - name: reason_start
+        description: "The reason why the track was played"
+        data_tests:
+          - accepted_values:
+              values: ["playbtn", "trackdone", "clickrow", "fwdbtn", "remote", "backbtn", "trackerror", "appload", "unknown", "popup", "uriopen", "clickside", "", "persisted", "endplay"]
+      - name: reason_end
+        description: "The reason why the track ended"
+        data_tests:
+          - accepted_values:
+              values: ["remote", "trackdone", "endplay", "fwdbtn", "logout", "backbtn", "unexpected-exit", "unexpected-exit-while-paused", "unknown", "trackerror", "clickrow", "popup", "uriopen", "clickside", "", "playbtn", "appload"]
+      - name: shuffle
+        description: "Boolean value that indicates if shuffle was enabled or not"
+        data_tests:
+          - not_null
+      - name: skipped
+        description: "Annotation to determine if the track was skipped or not"
+        data_tests:
+          - accepted_values:
+              values: [0, 1, NULL]
+      - name: offline
+        description: "Boolean value that indicates if the listening session was offline or not"
+        data_tests:
+          - not_null
+      - name: ts
+        description: "The timestamp when the track was played"
+        data_tests:
+          - not_null
+          - unique
+      - name: offline_ts
+        description: "The timestamp recorded offline or on the device itself for when the track was played"
+        data_tests:
+          - not_null
+          - unique
+      - name: ms_played
+        description: "The number of milliseconds that the track was played for"
+        data_tests:
+          - not_null
+      - name: incognito_mode
+        description: "Boolean value that indicates whether the listening session was performed in incognito mode or not"
+        data_tests:
+          - not_null
