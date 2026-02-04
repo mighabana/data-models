@@ -2,12 +2,21 @@ data_models:
     target: dev
     outputs:
       dev:
-        type: bigquery
-        method: service-account
-        keyfile: "{{ env_var('DBT_KEYFILE') }}"
-        project: "{{ env_var('DBT_GCP_PROJECT') }}"
-        dataset: "{{ env_var('DBT_DATASET') }}"
-        threads: 1
-        timeout_seconds: 300
-        location: europe-west4
-        priority: interactive
+        type: clickhouse
+        driver: native
+        host: "{{ env_var('CLICKHOUSE_HOST') }}"
+        port: 9000
+        user: "{{ env_var('CLICKHOUSE_USER') }}"
+        password: "{{ env_var('CLICKHOUSE_PASS') }}"
+        secure: False
+        verify: False
+        schema: default
+        # type: bigquery
+        # method: service-account
+        # keyfile: "{{ env_var('DBT_KEYFILE') }}"
+        # project: "{{ env_var('DBT_GCP_PROJECT') }}"
+        # dataset: "{{ env_var('DBT_DATASET') }}"
+        # threads: 1
+        # timeout_seconds: 300
+        # location: europe-west4
+        # priority: interactive
