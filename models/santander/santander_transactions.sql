@@ -13,7 +13,7 @@ SELECT
             '%RESTAURANTE%', '%MCDONALDS%', '%MC DONALD%', '%HAMBRE%', '%SANDWICHEZ%', '%MUSTAFA%', '%COFFEE%', '%365%', '% BAR %', '%EL CHANGARRITO%', '%BUENAS MIGAS%', '%ROYAL KING%', '%PIZZAMARKET%', '%TORRONS PLANELL%', '%EL ÑAÑO%', '%TIO BIGOTES%', '%LA CONDESA%', '%HOLY MADRE%', '%HELADERIA%', '%GELATS CARAMBOL%', '%EL FORNET%', '%99 CHEESECAKE%', '%HONEST GREENS%', '%FAUNA%', '%DULZURAMIA%', '%BEER%', '%GLOVO%'
         ]) THEN 'DINING'
         WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%SANITAS%']) THEN 'INSURANCE'
-        WHEN direction = 'OUT' AND arrayExists(p -> UPPER(target_name) ILIKE p, ['%DRUM LESSONS%', '%EL PATIO ESTUDI%', '%BACKSTORY BOOKS%']) THEN 'HOBBIES'
+        WHEN direction = 'OUT' AND arrayExists(p -> UPPER(target_name) ILIKE p, ['%STICHTING MOLLIE%', '%DRUM LESSONS%', '%EL PATIO ESTUDI%', '%BACKSTORY BOOKS%']) THEN 'HOBBIES'
         WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%NODISEA%']) THEN 'LEGAL'
         WHEN direction = 'OUT' AND arrayExists(p -> UPPER(target_name) ILIKE p, ['%ZARA%', '%CAMPER%', '%UNIQLO%', '%PRIMOR%', '%AMAZON%']) THEN 'SHOPPING'
         WHEN direction = 'OUT' AND arrayExists(p -> UPPER(target_name) ILIKE p, ['%UNITED%']) THEN 'TRAVEL'

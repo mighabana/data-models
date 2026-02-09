@@ -3,7 +3,7 @@ SELECT
     created_on,
     target_name,
     CASE
-        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%EL PATIO ESTUDIO%', '%THE SHORTLIST%']) THEN 'HOBBIES'
+        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%STEAM%', '%DRUM LESSONS GCAMACHO%', '%CASA DEL LIBRO%', '%EL PATIO ESTUDIO%', '%THE SHORTLIST%']) THEN 'HOBBIES'
         WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%PREPLY%']) THEN 'LEARNING'
         WHEN UPPER(target_name) ILIKE '%AVECILLA%' THEN 'RENT'
         WHEN arrayExists(p -> UPPER(target_name) ILIKE p, [
@@ -11,7 +11,8 @@ SELECT
             '%PRIMAPRIX%', '%ALDI%', '%ALCAMPO%', '%CONDIS%', '%DAY DAY GO%',
             '%STORE LEPANT%', '%FAMILYMART%'
         ]) THEN 'GROCERIES'
-        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%ENTROPIA%', '%ALIEXPRESS%', '%MUJI%']) THEN 'SHOPPING'
+        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%ENTROPIA%', '%ALIEXPRESS%', '%MUJI%', '%NORMAL%']) THEN 'SHOPPING'
+        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%MOOBY CINEMAS%']) THEN 'ENTERTAINMENT'
         -- ^ [keep above] recategorizes some of the category filters
         -- # Category filters:
         WHEN category = 'Transport' THEN 'TRANSPORTATION'
