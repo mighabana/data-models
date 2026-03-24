@@ -40,3 +40,5 @@ models:
       +schema: bronze_santander
     silver:
       +schema: silver
+    yahoo_finance:
+      +schema: bronze_yahoo_finance

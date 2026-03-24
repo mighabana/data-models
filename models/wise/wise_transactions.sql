@@ -3,21 +3,29 @@ SELECT
     created_on,
     target_name,
     CASE
+        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%NAMECHEAP.COM%']) THEN 'SUBSCRIPTIONS'
         WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%STEAM%', '%DRUM LESSONS GCAMACHO%', '%CASA DEL LIBRO%', '%EL PATIO ESTUDIO%', '%THE SHORTLIST%']) THEN 'HOBBIES'
         WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%PREPLY%']) THEN 'LEARNING'
         WHEN UPPER(target_name) ILIKE '%AVECILLA%' THEN 'RENT'
         WHEN arrayExists(p -> UPPER(target_name) ILIKE p, [
             '%SUPERMERCADO%', '%MERCADONA%', '%BON PREU%', '%CARREFOUR%', '%MARKET CASA ITALIA%', 
             '%PRIMAPRIX%', '%ALDI%', '%ALCAMPO%', '%CONDIS%', '%DAY DAY GO%',
-            '%STORE LEPANT%', '%FAMILYMART%'
+            '%STORE LEPANT%', '%FAMILYMART%', '%CHARTER%', '%SUPERMERCAT%',
+            '%EX. MARINA ROSELLO - SHOPIFY%'
         ]) THEN 'GROCERIES'
-        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%ENTROPIA%', '%ALIEXPRESS%', '%MUJI%', '%NORMAL%']) THEN 'SHOPPING'
+        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%BALTIMORE BARBER%']) THEN 'GROOMING'
+        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%ENTROPIA%', '%ALIEXPRESS%', '%MUJI%', '%NORMAL%', '%RE READ%', '%PRIMOR%' ]) THEN 'SHOPPING'
         WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%MOOBY CINEMAS%']) THEN 'ENTERTAINMENT'
+        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, ['%ALPACA SECURITIE%']) THEN 'INVESTMENTS'
+        WHEN arrayExists(p -> UPPER(target_name) ILIKE p, [
+            '%LA DULZURA%', '%DASHU%', '%COMPÀ%'
+        ]) THEN 'DINING'
         -- ^ [keep above] recategorizes some of the category filters
         -- # Category filters:
         WHEN category = 'Transport' THEN 'TRANSPORTATION'
         WHEN category = 'Eating out' THEN 'DINING'
         WHEN category = 'Shopping' THEN 'SHOPPING'
+        WHEN direction = 'IN' THEN 'INCOME'
         ELSE 'OTHERS'
     END as category,
 
